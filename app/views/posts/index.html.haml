@@ -1,0 +1,6 @@
+%h1 Index page
+- @posts.each do |post|
+	%h3=link_to post.title, post
+	%p= post.description
+	%p= post.user.name
+	%p=link_to "Delete memory", post_path(post), method: :delete if current_user && current_user.admin?

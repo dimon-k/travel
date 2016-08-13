@@ -1,0 +1,10 @@
+%h1 All users
+- @users.each do |u|
+	%h4= u.name
+	%h4= u.lastname
+	%p= u.email
+	%p
+		- if u.deleted_at != nil
+			Deleted:
+			= l u.deleted_at, format: "%B %d, %Y at %H:%M"
+	%p=link_to "Delete User", setting_path(u), data: { confirm: "Are you sure?" }, method: :delete

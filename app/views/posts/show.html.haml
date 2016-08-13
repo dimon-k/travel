@@ -1,0 +1,20 @@
+%h1 Show page
+%h3= @post.title
+%p= @post.description
+%p= @post.user.name
+-if current_user && ( current_user.id == @post.user_id || current_user.admin? )
+	=link_to "Edit memory", edit_post_path
+	=link_to "Delete memory", post_path, method: :delete
+
+%h4 Share your thoughts about the memory
+
+- @comments.each do |comment|
+	%p= comment.content
+	%p= comment.user.name
+	-if current_user && ( current_user.id == comment.user_id || current_user.admin? )
+		=link_to "Edit thought", edit_post_comment_path(@post, comment)
+		=link_to "Delete thought", post_comment_path(@post, comment), method: :delete
+-if user_signed_in?
+	= simple_form_for([@post, @post.comments.build]) do |c|
+		= c.input :content
+		= c.submit "Share thought"
