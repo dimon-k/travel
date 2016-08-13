@@ -8,6 +8,8 @@ end
 
 resources :settings, only: [:index, :destroy]
 
+post '/settings/:id' => "settings#change_user_authority"
+
 root 'posts#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

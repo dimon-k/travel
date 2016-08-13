@@ -1,8 +1,14 @@
 %h1 All users
 - @users.each do |u|
-	%h4= u.name
-	%h4= u.lastname
+	%h4= u.lastname + " " + u.name
 	%p= u.email
+	
+	- if u.admin == true
+		Admin: YES
+	- else
+		Admin: NO
+	%p=link_to "Change authority", setting_path(u), method: :post
+	
 	%p
 		- if u.deleted_at != nil
 			Deleted:

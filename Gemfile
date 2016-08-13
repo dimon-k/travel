@@ -5,6 +5,8 @@ gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'paperclip', '~> 4.3', '>= 4.3.2'
 gem 'devise', '~> 3.5', '>= 3.5.3'
 
+gem 'seed_dump'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Allows to use the Postgres database

@@ -4,7 +4,7 @@ class SettingsController < ApplicationController
 	before_action :user_or_admin
 
 	def index
-		@users = User.all
+		@users = User.order('lastname ASC').all
 	end
 
 	def destroy
@@ -12,4 +12,23 @@ class SettingsController < ApplicationController
 		@user.soft_delete
 	    redirect_to settings_path
 	end
+
+	# Change users role ADMIN to NOT_ADMIN and vice verse
+  	def change_user_authority
+  		@user = User.find(params[:id])
+  		if @user.admin == true
+  			@user.admin = false
+  		else
+  			@user.admin = true
+  		end
+  		@user.save
+  		redirect_to settings_path
+  	end
+
+
+#  	private
+#	def post_params
+#		params.require(:user).permit(:admin)
+#	end
+
 end
