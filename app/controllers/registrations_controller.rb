@@ -1,7 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
 
 	before_action :authenticate_user!
-	before_action :user_or_admin, only: [:destroy]
+	#before_action :user_or_admin, only: [:destroy] - as it has appeared, 
+													#the line I added is not needed in that case
 
 	def destroy
 	    resource.soft_delete

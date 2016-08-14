@@ -25,10 +25,4 @@ class SettingsController < ApplicationController
   		redirect_to settings_path
   	end
 
-
-#  	private
-#	def post_params
-#		params.require(:user).permit(:admin)
-#	end
-
 end
