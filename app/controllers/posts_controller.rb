@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
 	before_action :authenticate_user!, except: [:index, :show]
-	before_action :find_post, only: [:show, :edit, :update, :destroy]
+	before_action :find_post, only: [:show, :edit, :update, :destroy, :delete_avatar]
 	before_action :user_or_admin, only: [:edit, :update, :destroy]
 
 	def index
@@ -26,9 +26,17 @@ class PostsController < ApplicationController
 	end
 
 	def edit
+		#@delete = ""
+	end
+
+	def delete_avatar
+		@post.avatar = nil
+		@post.save
+		redirect_to @post
 	end
 
 	def update
+		#@post.avatar = nil if @postDelete == "1"
 		if @post.update(post_params)
 			redirect_to @post
 		else
@@ -47,6 +55,6 @@ class PostsController < ApplicationController
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :description)
+		params.require(:post).permit(:title, :description, :avatar)
 	end
 end

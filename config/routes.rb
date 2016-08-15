@@ -10,6 +10,7 @@ end
 resources :settings, only: [:index, :destroy]
 
 post '/settings/:id' => "settings#change_user_authority"
+post '/posts/:id' => "posts#delete_avatar"
 
 root 'posts#index'
 

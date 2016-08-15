@@ -2,4 +2,12 @@
 = simple_form_for @post do |p|
 	= p.input :title
 	= p.input :description
+	= p.input :avatar, as: :file, :label => "Picture (optional)"
+	-#2222222222= @delete.check_box true, false
+	-#2222222222= p.check_box :avatar, checked: false
+	%p 
+		"Delete picture?" 
+		-#= check_box_tag :@postDelete, :value => "1"
+		-#= @postDelete.input 
+	= link_to "Delete picture", post_path(@post.id), method: :post
 	= p.submit "Update memory"

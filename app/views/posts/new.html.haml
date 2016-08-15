@@ -2,4 +2,5 @@
 = simple_form_for @post do |p|
 	= p.input :title
 	= p.input :description
+	= p.input :avatar, as: :file, :label => "Picture (optional)"
 	= p.submit "Publish memory"
